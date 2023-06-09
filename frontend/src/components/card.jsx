@@ -1,5 +1,5 @@
 import {React ,useState}from 'react'
-import {Navigate,Link} from 'react-router-dom';
+import {Link} from 'react-router-dom';
 import axios from 'axios'
 import Card from '@mui/material/Card';
 import CardContent from '@mui/material/CardContent';
@@ -8,22 +8,25 @@ import {Stack,Button} from "@mui/material";
 import BookFlight from './flightCard';
 
 const FlightCard = () => {
-    const [flightDetail,setflightDetail]= useState({source:'',destination:'',date:new Date()});
-    const [flightsFound,setflightsFound]=useState([]);
-    const token = localStorage.getItem("authToken");
+    const [flightDetail,setflightDetail]= useState({source:'',destination:'',date:new Date()}); // state for storing flight details
+    const [flightsFound,setflightsFound]=useState([]); // state for storing flights found
+    const token = localStorage.getItem("authToken"); // getting token from local storage
+    // function to check if user is logged in or not
     const checkAuthorised = async()=>{
         try {
             if(!token) {
                 window.alert("You are not logged in");
             }
-                // go to login route
         }catch (error) {
             console.log(error);
         }
     }
+    // function to handle change in input fields
     function handleChange(e){
         setflightDetail({...flightDetail,[e.target.name]:e.target.value})
     }
+
+    // function to handle submit
     const handleSubmit = (e) => {
         e.preventDefault();
         axios.post('http://localhost:5000/getflight',flightDetail).then((res)=>{
@@ -32,9 +35,9 @@ const FlightCard = () => {
             console.log(flightsFound);
         })
     }
-    function reverseString(str) {
 
-        // empty string
+    // function to reverse date for displaying in proper format on page
+    function reverseString(str) {
         const arr = str.split('-');
         let m = Number(arr[2])+1;
         m = m.toString();
@@ -43,11 +46,8 @@ const FlightCard = () => {
         }
         return m+'-'+arr[1]+'-'+arr[0];;
     }
-    
-    // function bookFlight(id){
-    //     console.log(id);
-    //     BookFlight(id);
-    // }
+
+    // function to display flights found
     const dataItems = flightsFound.map((flight) =>
         <div className='p-1' key={flight._id} >
         <div className="card w-100" style={{backgroundColor:'#301E67',color:'white'}}>
@@ -76,12 +76,7 @@ const FlightCard = () => {
         </div>
 
         </div>
-    // <li key={flight._id}>
-    //   <p>{flight.name}</p>
-    //   <span>{flight.price}</span>
-    //   </li>
     );
-    // console.log(flight.destination)
     console.log(dataItems)
 return (
     <Card sx={{ width: { xs: '240px', sm: '480px', md: "720px", }, boxShadow: "none", borderRadius: 5 }} >

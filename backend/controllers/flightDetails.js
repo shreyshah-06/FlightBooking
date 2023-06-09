@@ -1,9 +1,10 @@
 const flights = require("../model/flights");
 
+// Function to add a flight
 const addFlight = async(req,res)=>{
     try {
-        const {destination,source,price,airline,name,date,dept,arr} = req.body;
-        const flight = await flights.create({destination,source,price,airline,name,date,dept,arr});
+        const {destination,source,price,airline,name,date,dept,arr} = req.body; // Destructuring the request body
+        const flight = await flights.create({destination,source,price,airline,name,date,dept,arr}); // Creating a new flight
         if(!flight){
             return res.status(400).send({status:"not ok",msg:"flight not added"});
         }
@@ -13,9 +14,10 @@ const addFlight = async(req,res)=>{
     }
 }
 
+// Function to get the flights
 const getFlights = async(req,res)=>{
     try {
-        const {source,destination,date} = req.body;
+        const {source,destination,date} = req.body; // Destructuring the request body
         console.log(typeof(date));
         var datee = new Date(date);
         // var newDate = new Date(datee.toISOString());
@@ -23,16 +25,10 @@ const getFlights = async(req,res)=>{
         let dateStr = datee.toISOString();
         console.log(dateStr);
         // date+="T18:30:00.000+00:00"
-        const flight = await flights.find({source:source,destination:destination,date:dateStr});
+        const flight = await flights.find({source:source,destination:destination,date:dateStr}); // Finding the flight using the source, destination and date
         if(!flight){
             return res.status(400).send({status:"not ok",msg:"no direct flights found for this route"});
         }
-        console.log(typeof(flight));
-        let flightsDet=[];
-        for(let v of flight){
-            flightsDet.push(`${v.airline}: Rs.${v.price}`);
-        }
-        console.log(flightsDet)
         return res.status(200).send(flight);
     } catch (error) {
         console.log(error)
