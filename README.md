@@ -7,13 +7,14 @@
 * This Project has been made in a short time so the functionalities are limited for now, they can be increased in future easily.
 * The UI/UX is minimal as the project has been made keeping in mind the backend as the primary goal. This can also be improved easily in future.
 * With some work on the project it can be deployed to a wider audience.
+* The code is well commented and formatted so tweaks and additions could be easily made.
 
 ## Backend
 ### For this project I have made a custom Backend using NodeJS,ExpressJS and MongoDB. Using the backend the data is getting fetched and manipulated accordingly.
-### Several endpoints have been made in backend for the various functionalities.
+### Several endpoints have been made in backend for the various functionalities.This functionalities can be increased or the existing ones can be changed very easily as the code has been well commented and formatted.
 
 ## Frontend
-### ReactJS has been used for the frontend development along with MUI and Bootstrap.
+### ReactJS has been used for the frontend development along with MUI and Bootstrap.The frontend can be made a lot better with some more time.
 
 ## Technologies Used
 
@@ -23,6 +24,7 @@
 * NodeJS
 * ExpressJS
 * MongoDB
+* JWT Authentication
 
 
 ## Available Scripts
