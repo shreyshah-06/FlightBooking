@@ -4,9 +4,9 @@
 ### My major focus of this project has been backend development. The UI/UX and the frontend of the site can be improved with a bit more of time easily.
 
 ## Scope of the project
-*This Project has been made in a short time so the functionalities are limited for now, they can be increased in future easily.
-*The UI/UX is minimal as the project has been made keeping in mind the backend as the primary goal. This can also be improved easily in future.
-*With some work on the project it can be deployed to a wider audience.
+* This Project has been made in a short time so the functionalities are limited for now, they can be increased in future easily.
+* The UI/UX is minimal as the project has been made keeping in mind the backend as the primary goal. This can also be improved easily in future.
+* With some work on the project it can be deployed to a wider audience.
 
 ## Backend
 ### For this project I have made a custom Backend using NodeJS,ExpressJS and MongoDB. Using the backend the data is getting fetched and manipulated accordingly.
